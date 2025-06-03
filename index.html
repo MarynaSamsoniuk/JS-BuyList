@@ -1,16 +1,100 @@
 <!DOCTYPE html>
-<html>
-<head lang="uk">
+<html lang="uk">
+<head>
+    <title>Homework 2</title>
     <meta charset="UTF-8">
-    <title>My Page</title>
-
-
-    <link rel="stylesheet" type="text/css" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-	<span class="product-item">
-		Apple
-		<span class="amount">4</span>
-	</span>
+    <div class="shopping-cart-container">
+        <section class="product-management">
+            <div class="product-search">
+                <input type="text" id="product-search-input" name="search-product" placeholder="Назва товару" />
+                <button type="button" id="product-add-button" data-tooltip="Додати продукт">Додати</button>
+            </div>
+
+            <div class="product-list-main">
+
+                <div class="product-card">
+                    <div class="product-info">
+                        <span class="product-name crossed">Помідори</span>
+                    </div>
+                    <div class="quantity-display">
+                        <span class="quantity-value">2</span>
+                    </div>
+                    <div class="product-controls">
+                        <button type="button" class="purchase-status-button" data-tooltip="Змінити статус">Не куплено</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-info">
+                        <span class="product-name">Печиво</span>
+                    </div>   
+                    <div class="quantity-controls">
+                        <button type="button" class="decrease-button" data-tooltip="Зменшити кількість">-</button>
+                        <span class="quantity-value">2</span>
+                        <button type="button" class="increase-button" data-tooltip="Збільшити кількість">+</button>
+                    </div>
+                    <div class="product-controls">
+                        <button type="button" class="purchase-status-button" data-tooltip="Змінити статус">Куплено</button>
+                        <button type="button" class="delete-button" data-tooltip="Видалити товар">×</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-info">
+                        <input type="text" id="new-product-name" name="product-name" value="Сир"/>
+                    </div>
+                    <div class="quantity-controls">
+                        <button type="button" class="decrease-button" disabled data-tooltip="Недоступно">-</button>
+                        <span class="quantity-value">1</span>
+                        <button type="button" class="increase-button" data-tooltip="Збільшити кількість">+</button>
+                    </div>
+                    <div class="product-controls">
+                        <button type="button" class="purchase-status-button" data-tooltip="Змінити статус">Куплено</button>
+                        <button type="button" class="delete-button" data-tooltip="Видалити товар">×</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="summary-lists">
+            <section class="unbought-products">
+                <span class="summary-title">Залишилося</span>
+                <div class="unbought-product-list">
+                    <div class="summary-product">
+                        <span class="summary-product-name">Печиво</span>
+                        <span class="summary-product-quantity">2</span>
+                    </div>
+
+                    <div class="summary-product">
+                        <span class="summary-product-name">Сир</span>
+                        <span class="summary-product-quantity">1</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="purchased-products">
+                <span class="summary-title">Куплено</span>
+                <div class="purchased-product-list">
+                    <div class="summary-product">
+                        <span class="summary-product-name crossed">Помідори</span>
+                        <span class="summary-product-quantity crossed">2</span>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <section class="badge">
+        <span class="badge-title">Buy List</span>
+        <div class="creator-info">
+            <span class="creator-label">Created by:</span>
+            <span class="creator-name">Maryna Samsoniuk</span>
+        </div>
+    </section>
 </body>
 </html>
