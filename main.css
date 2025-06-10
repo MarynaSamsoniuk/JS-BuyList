@@ -1,3 +1,15 @@
+:root {
+    --light-text-color: #636363;
+    --dark-text-color: #282828;
+    --light-blue-color: #2185D0;
+    --dark-blue-color: #2276b7;
+    --orange: #f2701d;
+    --light-purple-color: #ae00d7;
+    --dark-purple-color: #4d01da;
+    --light-gray-color: #f6f6f6;
+    --dark-gray-color: #c5c5c6;
+}
+
 html {
     font-size: 16px;
 }
@@ -11,12 +23,16 @@ body {
 }
 
 span {
-    color: #282828;
+    color: var(--dark-text-color);
     font-size: 0.9em;
+} 
+
+.bought {
+    text-decoration: line-through;
 }
 
-.crossed {
-    text-decoration: line-through;
+.inaccessible {
+    display: none;
 }
 
 button:active {
@@ -25,11 +41,11 @@ button:active {
 
 .purchase-status-button {
     background: linear-gradient(to bottom, #f6f6f6, #efefef);
-    border: 1px solid #c5c5c6;
-    border-bottom: 3px solid #c5c5c6;
+    border: 1px solid var(--dark-gray-color);
+    border-bottom: 3px solid var(--dark-gray-color);
     border-radius: 5px;
-    padding: 0.6rem 1.2rem;
-    color: #636363;
+    padding: 0.6rem 0.9rem;
+    color: var(--light-text-color);
     cursor: pointer;
     white-space: nowrap;
     flex-shrink: 0;
@@ -66,11 +82,11 @@ button:active {
     cursor: pointer;
     flex-shrink: 0;
     font-weight: bold;
-    border: none;
 }
 
 .increase-button {
     background-color: #22ba46;
+    border: none;
     border-bottom: 3px solid #22a340;
 }
 
@@ -80,12 +96,14 @@ button:active {
 
 .increase-button:disabled {
     background-color: #96dba5;
+    border: none;
     border-bottom: 3px solid #96dba5;
     cursor: not-allowed;
 }
 
 .decrease-button {
     background-color: #db2828;
+    border: none;
     border-bottom: 3px solid #bf2627;
 }
 
@@ -95,6 +113,7 @@ button:active {
 
 .decrease-button:disabled {
     background-color: #ef9f9e;
+    border: none;
     border-bottom: 3px solid #ef9f9e;
     cursor: not-allowed;
 }
@@ -102,10 +121,10 @@ button:active {
 #product-add-button {
     padding: 0.6em 1.5rem;
     border: none;
-    border-bottom: 3px solid #2276b7;
+    border-bottom: 3px solid var(--dark-blue-color);
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
-    background-color: #2185D0;
+    background-color: var(--light-blue-color);
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -147,6 +166,7 @@ button:active {
 .shopping-cart-container {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    align-items: start;
     gap: 2%;
     padding: 20px;
 }
@@ -191,8 +211,8 @@ button:active {
     background-color: #f9f9f9;
 }
 
-.product-card:last-of-type {
-    padding-bottom: 0.9rem;
+.product-card:last-child {
+    padding-bottom: 0;
 }
 
 .product-info {
@@ -225,7 +245,7 @@ button:active {
     padding: 0.3rem 0.6rem;
     margin: 0 0.3rem;
     border-radius: 3px;
-    color: #636363;
+    color: var(--light-text-color);
     font-size: 0.9rem;
 }
 
@@ -240,7 +260,7 @@ button:active {
     display: block;
     font-size: 1.5rem;
     font-weight: bold;
-    color: #282828;
+    color: var(--dark-text-color);
     padding: 1.5rem 0.9rem;
 }
 
@@ -278,11 +298,11 @@ button:active {
 }
 
 .summary-product-name {
-    color: #636363;
+    color: var(--light-text-color);
 }
 
 .summary-product-quantity {
-    background-color: #f2701d;
+    background-color: var(--orange);
     color: #fff;
     padding: 0.2rem 0.4rem;
     border-radius: 50%;
@@ -290,22 +310,23 @@ button:active {
 }
 
 .badge {
-    background-color: #ae00d7;
+    background-color: var(--light-purple-color);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     position: fixed;
-    width: 150px;
-    height: 35px;
+    width: 9.4rem;
+    height: 2rem;
     bottom: 0;
-    left: 20px;
-    padding: 20px;
+    left: 1.3rem;
+    padding: 1.3rem;
     transition: all 1s ease;
     overflow: hidden;
+    z-index: 1000;
 }
 
 .badge:hover {
-    height: 110px;
-    background-color: #4d01da;
+    height: 6.9rem;
+    background-color: var(--dark-purple-color);
 }
 
 .badge-title {
@@ -318,7 +339,7 @@ button:active {
 
 .creator-info {
     opacity: 0;
-    margin: 10px;
+    margin: 0.6rem;
     transition: opacity 1s ease;
 }
 
@@ -333,9 +354,7 @@ button:active {
 
 .creator-name {
     color: white;
-    font-size: 1.6rem;
-    display: flex;
-    justify-content: center;
+    font-size: 1.6rem; 
 }
 
 [data-tooltip] {
@@ -349,11 +368,11 @@ button:active {
     top: -20px;
     left: 50%;
     transform: translateX(-50%) translateY(10px) scale(0.8);
-    background-color: #ae00d7;
+    background-color: var(--light-purple-color);
     color: #fff;
     padding: 5px 10px;
     border-radius: 10px;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
@@ -403,7 +422,9 @@ button:active {
     }
     
     .delete-button {
-        padding: 0.4rem 0.7rem;
+        padding: 0.2rem 0.2rem;
+        width: 1.8rem;
+        height: 1.8rem;
     }
     
     .quantity-controls button {
@@ -416,8 +437,7 @@ button:active {
         padding: 0.2rem 0.4rem;
         font-size: 0.8rem;
     }
-}
-
+} 
 
 @media (max-width: 500px) {
     .shopping-cart-container {
@@ -464,17 +484,20 @@ button:active {
     }
 
     .delete-button {
-        padding: 0.4rem 0.8rem;
+        padding: 0.2rem 0.2rem;
         font-size: 0.75rem;
+        width: 2rem;
+        height: 2rem;
     }
 }
 
 @media print {
     .badge {
         background-color: white;
-        border: 2px solid #4d01da;
-        height: 75px;
+        border: 2px solid var(--dark-purple-color);
         border-radius: 10px;
+        position: static; 
+        height: fit-content;
     }
     
     .badge .badge-title {
@@ -488,6 +511,6 @@ button:active {
     
     .badge .creator-label,
     .badge .creator-name {
-        color: #4d01da;
+        color: var(--dark-purple-color);
     }
 }
