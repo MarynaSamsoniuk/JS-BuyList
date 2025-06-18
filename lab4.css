@@ -1,0 +1,553 @@
+:root {
+    --orange-medium: #f59b58;
+    --red-high: #f17258;
+    --gray-low: #efeeee;
+    --grey-text-color: #797e81;
+    --background-color: #f6f6f6;
+    --light-gray-color: #e0e0e0;
+    --blue-color: #4285f4;
+    --blue-hover: #3367d6;
+    --white: #ffffff;
+    --black: #000000;
+    --border-radius: 8px;
+    --shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.1);
+    --modal-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.to-do-app {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    justify-items: center;
+    gap: 1.3rem;
+    padding: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.to-do-title {
+    margin: 0;
+}
+
+.task-adder,
+.task-controls {
+    width: 80%;
+}
+
+.task-adder button,
+.control-group {
+    background-color: var(--white);
+    border: 1px solid var(--light-gray-color);
+    border-radius: var(--border-radius);
+    padding: 0.6rem 1rem;
+    box-shadow: var(--shadow);
+}
+
+.task-adder button {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.task-adder button:hover {
+    background-color: var(--light-gray-color);
+}
+
+.task-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.control-group::after {
+    content: '⌄';
+    position: absolute;
+    right: 1rem;
+    top: 40%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--grey-text-color);
+    pointer-events: none;
+}
+
+.control-label {
+    font-size: 1.2rem;
+    color: var(--black);
+    font-weight: 400;
+}
+
+.control-select {
+    appearance: none;
+    border: none;
+    background-color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--grey-text-color);
+    cursor: pointer;
+}
+
+.task-list {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--light-gray-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.task-item {
+    background-color: var(--white);
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.task-item:hover {
+    background-color: var(--background-color);
+}
+
+.task-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    right: 1rem;
+    height: 1px;
+    background-color: var(--light-gray-color);
+}
+
+.task-item:first-child {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.task-item:last-child {
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    border-bottom: 1px solid var(--light-gray-color);
+}
+
+.task-status {
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid var(--grey-text-color);
+    border-radius: 50%;
+    background-color: var(--white);
+    position: relative;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.task-status:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    font-size: 1rem;
+    color: var(--grey-text-color);
+    pointer-events: none;
+}
+
+.task-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex-grow: 1;
+}
+
+.task-title {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--black);
+    margin: 0;
+    max-width: 40%;
+}
+
+.task-priority {
+    padding: 0.3rem 0.6rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 400;
+    width: fit-content;
+    color: var(--white);
+}
+
+.priority-high {
+    background-color: var(--red-high);
+}
+
+.priority-medium {
+    background-color: var(--orange-medium);
+}
+
+.priority-low {
+    background-color: var(--gray-low);
+    color: var(--black);
+}
+
+.task-date {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--grey-text-color);
+    margin-left: 0;
+    white-space: nowrap;
+    padding-right: 1rem;
+    max-width: 30%;
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.edit-btn,
+.delete-btn {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--grey-text-color);
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    color: var(--black);
+}
+
+.new-task-window,
+.task-filter-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--modal-shadow);
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    z-index: 100;
+}
+
+.new-task-window {
+    padding: 1rem 2rem;
+    justify-items: center;
+}
+
+.window-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0;
+    border: none;
+}
+
+.add-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--black);
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--grey-text-color);
+    cursor: pointer;
+    padding: 0;
+}
+
+.close-btn:hover {
+    color: var(--black);
+}
+
+.add-new-task {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.form-group label,
+.priority-label {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.form-group input {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--light-gray-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--grey-text-color);
+    background-color: var(--white);
+    position: relative;
+}
+
+.form-group input::placeholder {
+    color: var(--grey-text-color);
+}
+
+.task-date-info {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.task-date-info input[type="date"] {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 0.8rem;
+}
+
+.calendar-icon {
+    position: absolute;
+    right: 0.8rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    pointer-events: none;
+    color: var(--grey-text-color);
+}
+
+.priority-options {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.priority-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.priority-option input[type="radio"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--blue-color);
+}
+
+.priority-text {
+    font-weight: 300;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.add-btn,
+.cancel-btn {
+    padding: 0.4rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 0.85rem;
+    font-weight: 300;
+    cursor: pointer;
+    border: none;
+}
+
+.add-btn {
+    background-color: var(--blue-color);
+    color: var(--white);
+}
+
+.add-btn:hover {
+    background-color: var(--blue-hover);
+}
+
+.cancel-btn {
+    background-color: var(--white);
+    color: var(--black);
+    border: 2px solid var(--light-gray-color);
+}
+
+.cancel-btn:hover {
+    background-color: #f8f9fa;
+}
+
+.task-filter-window {
+    padding: 2rem;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 50%;
+}
+
+.filter-title {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 2rem;
+}
+
+.filter-select {
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.filter-select select {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: var(--border-radius);
+    appearance: none;
+    cursor: pointer;
+    color: var(--black);
+}
+
+.filter-select .arrow {
+    position: absolute;
+    right: 2rem;
+    top: 40%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--grey-text-color);
+    pointer-events: none;
+}
+
+.filter-date-info {
+    width: 100%;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.filter-date-info input {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 1.5rem 1rem 1rem;
+    font-size: 1.5rem;
+    border: 1px solid var(--light-gray-color);
+    border-radius: var(--border-radius);
+    background: var(--white);
+    color: var(--black);
+}
+
+.filter-date-info .calendar-icon {
+    right: 1.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.apply-btn {
+    align-self: flex-end;
+    width: 30%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--blue-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    width: fit-content;
+}
+
+.apply-btn:hover {
+    background-color: var(--blue-hover);
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 670px) {
+    html {
+        font-size: 14px;
+    }
+
+    .task-date {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    html {
+        font-size: 13px;
+    }
+
+    .task-filter-window {
+        width: 95%;
+    }
+
+    .task-title {
+        font-size: 1rem;
+    }
+
+    .task-adder,
+    .task-list,
+    .task-controls {
+        width: 95%;
+    }
+}
+
+@media (max-width: 380px) {
+    html {
+        font-size: 12px;
+    }
+
+    .task-actions {
+        flex-direction: column;
+    }
+
+    .task-group {
+        max-width: 35%;
+    }
+}
+
+@media (max-width: 340px) {
+    html {
+        font-size: 11px;
+    }
+}
