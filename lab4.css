@@ -498,6 +498,20 @@ body {
     background-color: var(--blue-hover);
 }
 
+.report-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: var(--blue-color);
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.report-link:hover {
+  background-color: var(--blue-hover);
+}
+
 .hidden {
     display: none;
 }
